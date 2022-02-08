@@ -1,0 +1,11 @@
+./tools/addcmd.sh bash ls 
+echo "#! /bin/bash" > init
+echo "/bin/bash" >> init
+chmod +x init
+find . -path ./tools -prune -o -print | cpio -o -H newc | gzip > gplos-0.5.img
+. ./tools/config  # using . instead of source to keep ENV VARIABLE in current shell
+INITRD=gplos-0.5.img
+sudo kvm -kernel $KERNEL \
+ -cpu host \
+ -initrd $INITRD \
+ -curses \

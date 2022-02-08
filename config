@@ -1,0 +1,4 @@
+export KERNEL="/boot/vmlinuz-5.4.0-67-generic"
+export INITRD="gplos.img"
+echo "using kernel $KERNEL"
+echo "using initrd $INITRD"
